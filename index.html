@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <meta charset="utf-8">
+        <title>Surfer_Brain</title>
+        <meta name="description" content="Aframe">
+        <script src="https://aframe.io/releases/0.2.0/aframe.js"></script>
+        <script src="https://rawgit.com/ngokevin/aframe-firebase-component/master/dist/aframe-firebase-component.min.js"></script>
+        <script src="aframe-keyboard-controls.js"></script>
+        <script src="aframe-proxy-controls.js"></script>
+        <script src="aframe-gltf.min.js"></script>
+        <script src="line-drawer.js"></script>
+        <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v1.14.0/dist/aframe-extras.min.js"></script>
+      
+      
+        <script src="aframe-extra.js"></script>
+    </head>
+    <body>
+        <a-scene vr-mode-ui="enabled: false" firebase="apiKey: abc;
+                     authDomain: mysite.firebaseapp.com;
+                     databaseURL: https://mysite.firebaseio.com;
+                     storageBucket: mysite.appspot.com">
+           <a-assets>
+              <a-mixin id="avatar-head" geometry="primitive: box; depth: 0.3; height: 0.3; width: 0.3"
+              material="color: blue"></a-mixin>
+          </a-assets>
+    <a-entity  position="3.5 -9 -35.24"
+               rotation="70 -150 0" >
+
+         <a-entity id="avatar" mixin="avatar-head"
+              camera look-controls keyboard-controls="cameraUse: true"
+              firebase-broadcast="components: mixin, position, rotation">
+    </a-entity> </a-entity>
+          
+            <a-sky id="backgroundCol" color="black"></a-sky>
+          
+          
+    
+    <a-assets>
+
+         <a-asset-item id="frontal_skull" src="models/frontal_skull.ply"></a-asset-item>   
+         <a-asset-item id="parietalL_skull" src="models/parietalL_skull.ply"></a-asset-item>   
+         <a-asset-item id="parietalR_skull" src="models/parietalR_skull.ply"></a-asset-item>  
+         <a-asset-item id="occipital_skull" src="models/occipital_skull_wo.ply"></a-asset-item>   
+         <a-asset-item id="bone_flap" src="models/flap.ply"></a-asset-item>   
+         <a-asset-item id="mandible_skull" src="models/mandible_skull.ply"></a-asset-item>   
+         <a-asset-item id="lowerDentate_skull" src="models/lowerDentate_skull.ply"></a-asset-item> 
+         <a-asset-item id="upperDentate_skull" src="models/upperDentate_skull.ply"></a-asset-item> 
+         <a-asset-item id="mandible_skull" src="models/mandible_skull.ply"></a-asset-item> 
+         <a-asset-item id="maxilla_skull" src="models/maxilla_skull.ply"></a-asset-item>
+         <a-asset-item id="nasal_skull" src="models/nasal_skull.ply"></a-asset-item>
+         <a-asset-item id="palatine_skull" src="models/palatine_skull.ply"></a-asset-item>   
+         <a-asset-item id="sphenoid_skull" src="models/sphenoid_skull.ply"></a-asset-item> 
+         <a-asset-item id="temporalL_skull" src="models/temporalL_skull.ply"></a-asset-item>     
+         <a-asset-item id="temporalR_skull" src="models/temporalR_skull.ply"></a-asset-item>   
+         <a-asset-item id="zygomaR_skull" src="models/zygomaR_skull.ply"></a-asset-item>
+         <a-asset-item id="zygomaL_skull" src="models/zygomaL_skull.ply"></a-asset-item>   
+         <a-asset-item id="artery" src="models/artery.obj"></a-asset-item> 
+         <a-asset-item id="arterymtl" src="models/artery.mtl"></a-asset-item>  
+
+         <a-asset-item id="cerebellum" src="models/cerebellum.obj"></a-asset-item> 
+         <a-asset-item id="cerebellummtl" src="models/cerebellum.mtl"></a-asset-item>      
+
+         <a-asset-item id="pial" src="models/pial.obj"></a-asset-item> 
+         <a-asset-item id="pialmtl" src="models/pial.mtl"></a-asset-item>   
+
+         <a-asset-item id="brainstem" src="models/brainstem.obj"></a-asset-item> 
+         <a-asset-item id="brainstemmtl" src="models/brainstem.mtl"></a-asset-item>    
+
+      
+ 
+         <a-asset-item id="fibers" src="models/fibers.ply"></a-asset-item>   
+         <a-asset-item id="fibers_L" src="models/fibers_L.ply"></a-asset-item>   
+
+        <!--
+         <a-asset-item id="skull" src="models/skulled.ply"></a-asset-item>
+         <a-asset-item id="fibers" src="models/fibers.ply"></a-asset-item>
+        <a-asset-item id="fibers2" src="models/fibers2.ply"></a-asset-item>
+        <a-asset-item id="fibers3" src="models/fibers3.ply"></a-asset-item>
+        <a-asset-item id="fibers4" src="models/fibers4.ply"></a-asset-item>     
+        <a-asset-item id="tumor" src="models/tumor.ply"></a-asset-item>    
+        <a-asset-item id="leftHem" src="models/leftHem.ply"></a-asset-item>  
+        <a-asset-item id="rightHem" src="models/rh.ply"></a-asset-item>  
+        <a-asset-item id="CC2" src="models/CC2.obj"></a-asset-item>  
+        <a-asset-item id="CC2mtl" src="models/CC2.obj.mtl"></a-asset-item>  
+        <a-asset-item id="cc1" src="models/cc1.obj"></a-asset-item>   
+        <a-asset-item id="cc1mtl" src="models/cc1.obj.mtl"></a-asset-item>   
+        <a-asset-item id="brainstem" src="models/brainstem.obj"></a-asset-item>   
+        <a-asset-item id="brainstemmtl" src="models/brainstem.obj.mtl"></a-asset-item>   
+        <a-asset-item id="cerebellum" src="models/cerebellum.obj"></a-asset-item>  
+        <a-asset-item id="cerebellummtl" src="models/cerebellum.obj.mtl"></a-asset-item>  
+        <a-asset-item id="fornix" src="models/fornix.obj"></a-asset-item>   
+        <a-asset-item id="fornixmtl" src="models/fornix.obj.mtl"></a-asset-item>   
+        <a-asset-item id="pituitary" src="models/pituitary.obj"></a-asset-item>   
+        <a-asset-item id="pituitarymtl" src="models/pituitary.obj.mtl"></a-asset-item>   
+        <a-asset-item id="thalamus_actual" src="models/thalamus_actual.obj"></a-asset-item>   
+        <a-asset-item id="thalamus_actualmtl" src="models/thalamus_actual.obj.mtl"></a-asset-item>   --> 
+
+
+    </a-assets> 
+
+    <a-entity rotation= "-90 0 0" scale="2 2 2" position="0 0 -30">
+       <a-entity ply-model="src: #frontal_skull;"></a-entity>
+       <a-entity ply-model="src: #parietalL_skull;"></a-entity>
+       <a-entity ply-model="src: #parietalR_skull;"></a-entity>
+       <a-entity ply-model="src: #occipital_skull;"></a-entity>
+
+       <a-entity ply-model="src: #bone_flap;">
+          <a-animation attribute="rotation" to="0 10 0" dur="30000"></a-animation>
+       </a-entity>
+
+
+       <a-entity ply-model="src: #mandible_skull;"></a-entity>
+       <a-entity ply-model="src: #lowerDentate_skull;"></a-entity>
+       <a-entity ply-model="src: #upperDentate_skull;"></a-entity>
+
+       <a-entity ply-model="src: #maxilla_skull;"></a-entity>
+       <a-entity ply-model="src: #nasal_skull;"></a-entity>
+       <a-entity ply-model="src: #palatine_skull;"></a-entity>
+       <a-entity ply-model="src: #sphenoid_skull;"></a-entity>
+       <a-entity ply-model="src: #temporalL_skull;"></a-entity>
+       <a-entity ply-model="src: #temporalR_skull;"></a-entity>
+       <a-entity ply-model="src: #zygomaR_skull;"></a-entity>
+       <a-entity ply-model="src: #zygomaL_skull;"></a-entity>
+
+       <a-entity ply-model="src: #fibers;" rotation="-270 0 0" position="0 0 0.5"></a-entity>
+       <a-entity ply-model="src: #fibers_L;" rotation="-270 0 0" position="0 0 0.5"></a-entity>
+       
+
+       <a-entity obj-model="obj: #artery; mtl:#arterymtl" rotation="-270 0 0"  position="0 0 0.5"></a-entity>
+
+       <a-entity obj-model="obj: #cerebellum; mtl:#cerebellummtl"  rotation="-270 0 0" position="0 0 0.5"></a-entity>
+       <a-entity obj-model="obj: #pial"  material="shader:standard;  side:double; color:grey " rotation="-270 0 0" position="0 0 0.5"></a-entity>
+    
+       <a-entity obj-model="obj: #brainstem; mtl:#brainstemmtl"  rotation="-270 0 0" position="0 0 0.5"></a-entity>
+
+       <a-entity obj-model="obj: #head; mtl:#headmtl"  rotation="-270 0 0" position="0 0 0.5"></a-entity>
+    
+    
+    </a-entity>
+      
+         
+
+    
+      
+      <a-light color="#ccc" position="0 30 0" distance="100"  type="point"></a-light>
+      <a-light color="#ccc" position="3 10 -10" distance="50"  type="point"></a-light>
+      <a-light color="#ccc" position="0 0 -40" distance="50"  type="point"></a-light>
+      <a-light color="#ccc" position="0 30 -30" distance="50"  type="point"></a-light>
+      <a-light color="#ccc" position="30 0 -30" distance="50"  type="point"></a-light>
+      <a-light color="#ccc" position="-30 0 -30" distance="50"  type="point"></a-light>
+      <a-light color="#ccc" position="0 -30 -30" distance="50"  type="point"></a-light>
+
+    </a-scene>
+
+
+  </body>
+</html>
